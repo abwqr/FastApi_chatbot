@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <!-- Developed by Society of AI -->
+    <head>
+        <link rel="stylesheet" type="text/css" href="/static/style.css">
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    </head>
+
+    <body>
+        <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+        <h1>FastAPI Chatterbot - 
+            <a href="https://societyofai.in/" title="Society of AI" target="_blank">
+                SOAI
+            </a>
+        </h1>
+        <div>
+            <div id="chatbox">
+                <p class="botText">
+                    <span>Hi!. I'm a chatbot.</span>
+                </p>
+            </div>
+        
+
+        <div id="userInput">
+            <input id="textInput" type="text" name="msg" placeholder="Message">
+            <input id="buttonInput" type="submit" value="Send" pys-onClick="my_function">
+            <label id="test-output">
+            <input type="button" name="scriptbutton" value=" Run Script " onclick="goPython()">
+
+        </div>
+        
+       
+        <script>
+            function goPython(){
+                $.ajax({
+                  url: "test.py",
+                 context: document.body
+                }).done(function() {
+                 alert('finished python script');;
+                });
+            }
+        </script>
+        <script>
+            
+           
+            
+            $(document).ready(function() {
+                function getBotResponse() {
+                    
+
+                    var rawText = $('#textInput').val();
+                    var userHtml = '<p class="userText"><span>' + 123 + '</span></p>';
+                    $('#textInput').val("");
+                    $('#chatbox').append(userHtml);
+                    document.getElementById('userInput').scrollIntoView({block: 'start', behavior: 'smooth'});
+                    $.get("/getChatBotResponse", { msg: rawText }).done(function(data) {
+                        var botHtml = '<p class="botText"><span>' + data + '</span></p>';
+                        $("#chatbox").append(botHtml);
+                        document.getElementById('userInput').scrollIntoView({block: 'start', behavior: 'smooth'});
+                    });
+                }
+                $('#textInput').keypress(function(e) {
+                    if(e.which == 13) {
+                        postData('data to process');
+
+                    }
+                });
+                $('#buttonInput').click(function() {
+                    getBotResponse();
+                })
+            });  
+        </script>
+    </div>
+
+    </body>
+</html>
