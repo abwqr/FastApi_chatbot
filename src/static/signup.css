@@ -1,0 +1,65 @@
+/* styles.css */
+
+/* Reset default margin and padding for the whole document */
+body, h1, h2, h3, h4, h5, h6, p, ul, li, form, input {
+    margin: 0;
+    padding: 0;
+}
+
+/* Set the font family and size for the whole form */
+body {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+}
+
+/* Center the form container */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Center the container vertically */
+}
+
+/* Style the form */
+form {
+    width: 100%;
+    max-width: 400px;
+    border: 1px solid #ccc;
+    padding: 20px;
+}
+
+/* Style the form labels */
+form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+/* Style the form input fields */
+form input[type="text"],
+form input[type="number"] {
+    width: 100%;
+    padding: 8px 1px; /* Added right padding to the input fields */
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Style the form submit button */
+form input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+}
+
+/* Apply some additional spacing between elements */
+form label,
+form input,
+form input[type="submit"] {
+    display: block;
+    margin-bottom: 10px;
+}
